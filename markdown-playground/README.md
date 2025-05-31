@@ -1,54 +1,111 @@
-# React + TypeScript + Vite
+# 📘 Live Markdown Playground
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight, single-page web application that lets you write Markdown and see a live preview in HTML. Built with React + TypeScript, styled with Tailwind CSS, and powered entirely in the browser via IndexedDB.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🧠 **Real-time Markdown Preview**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+  - Instant conversion of Markdown to sanitized HTML on every keystroke.
+  - Optimized using `remark`, `rehype`, and `unified`.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- ⚡ **Dynamic Parser Loading**
+
+  - Markdown parser libraries are lazily loaded using `import()`.
+  - Improves initial bundle size and page load performance.
+
+- 🗂️ **Sample Documents**
+
+  - Includes `intro.md`, `features.md`, and `usage.md`.
+  - Users can load samples via a dropdown selector.
+
+- 🌗 **Theme Toggle**
+
+  - Light/Dark mode toggle using Tailwind's `dark:` variants.
+  - User preference is persisted with IndexedDB.
+
+- 💾 **Document Persistence**
+
+  - Last-edited Markdown is saved in IndexedDB (`documents` table).
+  - Automatically loaded on page refresh.
+
+- 📱 **Responsive Layout**
+
+  - Editor and preview panes side-by-side on desktop.
+  - Stacked vertically on mobile screens.
+
+---
+
+## 🧰 Tech Stack
+
+- **Frontend Framework:** React 18+ with TypeScript
+- **Styling:** Tailwind CSS + Typography Plugin
+- **Markdown Processing:** unified, remark-parse, remark-rehype, rehype-sanitize
+- **Persistence:** Dexie.js (IndexedDB)
+- **Build Tool:** Vite
+
+---
+
+## 🗂️ Folder Structure
+
+```
+src/
+├── components/
+│   ├── Editor.tsx
+│   ├── Preview.tsx
+│   ├── ThemeToggle.tsx
+│   └── SampleSelector.tsx
+├── hooks/
+│   └── useIndexedDB.ts
+├── samples/
+│   ├── intro.md
+│   ├── features.md
+│   └── usage.md
+├── db/
+│   └── db.ts
+├── App.tsx
+├── main.tsx
+└── index.css
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📦 Setup & Run
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+git clone https://github.com/FurkanPehlvn/markdown-playground.git
+cd markdown-playground
+npm install
+npm run dev
 ```
+
+---
+
+## 📝 Notes & Trade-offs
+
+- Used `rehype-sanitize` to prevent unsafe HTML injection.
+- Used `setTimeout` debouncing for Markdown processing and persistence.
+- Kept UI minimal to focus on performance, responsiveness, and state logic.
+
+---
+
+## 🎁 Potential Improvements
+
+- ⌨️ Add keyboard shortcuts like Ctrl+S (save), Ctrl+1/2/3 (sample switch)
+- 🔳 Fullscreen toggle for editor/preview
+- 📥 Download rendered HTML as a file
+- 🧩 Support tables, footnotes, or task lists with Markdown extensions
+- ♿ Accessibility audit with Lighthouse
+
+---
+
+## 📤 Submission
+
+- ✅ No localStorage or backend used
+- ✅ Everything runs in browser
+- ✅ IndexedDB via Dexie.js used for settings and content
+- ✅ Markdown parser loaded dynamically
+
+> Proudly crafted as a technical case study. ✨
