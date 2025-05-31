@@ -39,7 +39,7 @@ const Preview: React.FC<PreviewProps> = ({ markdown }) => {
       <h2 className="text-lg font-semibold mb-2">Preview</h2>
 
       <div
-        className="prose max-w-none bg-white dark:bg-gray-900 text-black dark:text-white p-4 rounded overflow-y-auto h-[80vh] border border-gray-300 dark:border-gray-600"
+        className="prose dark:prose-dark max-w-none bg-white dark:bg-gray-900 text-black dark:text-white p-4 rounded overflow-y-auto h-[80vh] border border-gray-300 dark:border-gray-600"
         dangerouslySetInnerHTML={{ __html: html }}
       />
     </div>
