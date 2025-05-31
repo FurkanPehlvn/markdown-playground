@@ -24,13 +24,10 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-black dark:text-white">
-      {/* Tema Toggle - En Üst */}
       <ThemeToggle />
 
-      {/* Örnek Dosya Seçimi */}
       <SampleSelector setMarkdown={setMarkdown} />
 
-      {/* Editör ve Preview Alanı */}
       <div className="flex flex-col md:flex-row">
         <Editor markdown={markdown} setMarkdown={setMarkdown} />
         <Preview markdown={markdown} />
