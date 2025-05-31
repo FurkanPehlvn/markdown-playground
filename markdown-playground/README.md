@@ -107,5 +107,3 @@ npm run dev
 - ✅ Everything runs in browser
 - ✅ IndexedDB via Dexie.js used for settings and content
 - ✅ Markdown parser loaded dynamically
-
-> Proudly crafted as a technical case study. ✨
