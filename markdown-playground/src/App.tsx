@@ -44,7 +44,7 @@ function App() {
         const content = (await import("./samples/intro.md?raw")).default;
         setMarkdown(content);
         setCurrentSample("intro");
-        console.log("Ctrl+1 → intro.md yüklendi");
+        console.log("Ctrl+1 intro.md yüklendi");
       } else if (isControl && e.key === "2") {
         e.preventDefault();
         const content = (await import("./samples/features.md?raw")).default;
