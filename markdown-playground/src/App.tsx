@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       save("current", markdown);
-    }, 400); //debounce
+    }, 400);
     return () => clearTimeout(timeout);
   }, [markdown]);
 

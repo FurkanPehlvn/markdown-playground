@@ -7,7 +7,6 @@ export default {
   theme: {
     extend: {
       typography: {
-        // dark modda başlıklar ve metin rengi
         dark: {
           css: {
             color: "#fff",
