@@ -53,7 +53,7 @@ Build Tool: Vite
 Setup & Run
 
 ```bash
-git clone https://github.com/yourusername/markdown-playground.git
+git clone https://github.com/FurkanPehlvn/markdown-playground.git
 cd markdown-playground
 npm install
 npm run dev
