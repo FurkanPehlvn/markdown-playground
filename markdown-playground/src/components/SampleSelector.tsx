@@ -2,11 +2,18 @@ import React from "react";
 
 interface SampleSelectorProps {
   setMarkdown: (value: string) => void;
+  currentSample: string | null;
+  setCurrentSample: (sample: string | null) => void;
 }
 
-const SampleSelector: React.FC<SampleSelectorProps> = ({ setMarkdown }) => {
+const SampleSelector: React.FC<SampleSelectorProps> = ({
+  setMarkdown,
+  currentSample,
+  setCurrentSample,
+}) => {
   const handleChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selected = e.target.value;
+    setCurrentSample(selected);
 
     let content = "";
     switch (selected) {
@@ -27,7 +34,7 @@ const SampleSelector: React.FC<SampleSelectorProps> = ({ setMarkdown }) => {
   };
 
   return (
-    <div className="p-4 bg-gray-50 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-600">
+    <div className="p-4 bg-gray-50 dark:bg-gray-800 border-b text-black border-gray-300 dark:border-gray-600">
       <label
         className="mr-2 font-medium dark:text-white"
         htmlFor="sampleSelect"
@@ -37,8 +44,8 @@ const SampleSelector: React.FC<SampleSelectorProps> = ({ setMarkdown }) => {
       <select
         id="sampleSelect"
         onChange={handleChange}
-        defaultValue=""
-        className="p-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-black dark:text-white rounded"
+        value={currentSample ?? ""}
+        className="p-2 border border-gray-300 rounded"
       >
         <option value="" disabled>
           -- Select a sample --

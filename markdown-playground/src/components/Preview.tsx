@@ -10,14 +10,16 @@ const Preview: React.FC<PreviewProps> = ({ markdown }) => {
   useEffect(() => {
     const parseMarkdown = async () => {
       const { unified } = await import("unified");
-      const remarkParse = (await import("remark-parse")).default;
-      const remarkBreaks = (await import("remark-breaks")).default;
-      const remarkRehype = (await import("remark-rehype")).default;
-      const rehypeSanitize = (await import("rehype-sanitize")).default;
-      const rehypeStringify = (await import("rehype-stringify")).default;
+      const remarkParse = (await import("remark-parse")).default; //markdown metni> markdown ast
+      const remarkGfm = (await import("remark-gfm")).default; // gelişmiş markdown özellikleri
+      const remarkBreaks = (await import("remark-breaks")).default; //satırsonu br
+      const remarkRehype = (await import("remark-rehype")).default; //markdown ast>html ast
+      const rehypeSanitize = (await import("rehype-sanitize")).default; //tehlikeli içeriği temizler <script,iframe>
+      const rehypeStringify = (await import("rehype-stringify")).default; //html asti >html string
 
       const file = await unified()
         .use(remarkParse)
+        .use(remarkGfm)
         .use(remarkBreaks)
         .use(remarkRehype)
         .use(rehypeSanitize)

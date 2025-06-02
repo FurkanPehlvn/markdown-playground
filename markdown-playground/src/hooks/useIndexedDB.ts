@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { db } from "../db/db";
-
+//save,load hook
 export function useIndexedDB(table: "settings" | "documents") {
   const save = useCallback(
     async (key: string, value: string) => {
